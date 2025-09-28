@@ -48,6 +48,8 @@
   "completed_at",
   "cancelled_at",
   "no_show",
+  "billing_section",
+  "sales_invoice_reference",
   "notifications_section",
   "sms_sent",
   "email_sent",
@@ -325,6 +327,18 @@
    "fieldname": "confirmation_required",
    "fieldtype": "Check",
    "label": "Confirmation Required"
+  },
+  {
+   "fieldname": "billing_section",
+   "fieldtype": "Section Break",
+   "label": "Billing"
+  },
+  {
+   "fieldname": "sales_invoice_reference",
+   "fieldtype": "Link",
+   "label": "Sales Invoice Reference",
+   "options": "Sales Invoice",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-calendar",

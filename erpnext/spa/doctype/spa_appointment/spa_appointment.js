@@ -25,6 +25,32 @@ frappe.ui.form.on('Spa Appointment', {
 			});
 		});
 
+		// Add Create Invoice button if completed but no invoice
+		if (frm.doc.status === 'Completed' && !frm.doc.sales_invoice_reference) {
+			frm.add_custom_button(__('Create Invoice'), function() {
+				frappe.call({
+					method: 'erpnext.spa.doctype.spa_appointment.spa_appointment.create_sales_invoice_from_appointment',
+					args: {
+						appointment: frm.doc.name
+					},
+					callback: function(r) {
+						if (r.message) {
+							frappe.msgprint(__('Sales Invoice created successfully'));
+							frm.reload_doc();
+							frappe.set_route('Form', 'Sales Invoice', r.message);
+						}
+					}
+				});
+			});
+		}
+
+		// Show invoice button if invoice exists
+		if (frm.doc.sales_invoice_reference) {
+			frm.add_custom_button(__('View Invoice'), function() {
+				frappe.set_route('Form', 'Sales Invoice', frm.doc.sales_invoice_reference);
+			});
+		}
+
 		frm.add_custom_button(__('Send SMS Reminder'), function() {
 			frappe.call({
 				method: 'erpnext.spa.doctype.spa_appointment.spa_appointment.send_appointment_reminder',

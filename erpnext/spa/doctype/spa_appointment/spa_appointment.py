@@ -85,6 +85,8 @@ class SpaAppointment(Document):
 		elif self.status == "Completed" and not self.completed_at:
 			self.db_set("completed_at", now())
 			self.create_service_history()
+			# Create sales invoice for billing
+			self.create_sales_invoice()
 		elif self.status == "Cancelled" and not self.cancelled_at:
 			self.db_set("cancelled_at", now())
 
@@ -132,6 +134,65 @@ class SpaAppointment(Document):
 		service_history.price_paid = self.final_price
 		service_history.appointment_reference = self.name
 		service_history.save(ignore_permissions=True)
+
+	def create_sales_invoice(self):
+		"""Create sales invoice for the completed appointment"""
+		try:
+			# Check if invoice already exists
+			existing_invoice = frappe.db.get_value("Sales Invoice Item", 
+				{"spa_appointment_reference": self.name}, "parent")
+			if existing_invoice:
+				return existing_invoice
+
+			# Create sales invoice
+			invoice = frappe.new_doc("Sales Invoice")
+			invoice.customer = self.customer
+			invoice.posting_date = self.appointment_date
+			invoice.due_date = self.appointment_date
+			invoice.company = frappe.defaults.get_user_default("company")
+
+			# Add service as invoice item
+			invoice.append("items", {
+				"item_code": self.create_or_get_service_item(),
+				"item_name": self.service_name,
+				"description": f"Spa Service: {self.service_name}",
+				"qty": 1,
+				"rate": self.final_price,
+				"amount": self.final_price,
+				"spa_appointment_reference": self.name
+			})
+
+			invoice.run_method("calculate_taxes_and_totals")
+			invoice.save(ignore_permissions=True)
+			
+			# Update appointment with invoice reference
+			self.db_set("sales_invoice_reference", invoice.name)
+			
+			return invoice.name
+
+		except Exception as e:
+			frappe.log_error(f"Error creating sales invoice for {self.name}: {str(e)}")
+			return None
+
+	def create_or_get_service_item(self):
+		"""Create or get item for the spa service"""
+		item_code = f"SPA-{self.spa_service}"
+		
+		if not frappe.db.exists("Item", item_code):
+			service_doc = frappe.get_doc("Spa Service", self.spa_service)
+			
+			item = frappe.new_doc("Item")
+			item.item_code = item_code
+			item.item_name = service_doc.service_name
+			item.item_group = "Services"
+			item.stock_uom = "Nos"
+			item.is_stock_item = 0
+			item.is_sales_item = 1
+			item.include_item_in_manufacturing = 0
+			item.description = service_doc.description or service_doc.service_name
+			item.save(ignore_permissions=True)
+			
+		return item_code
 
 
 @frappe.whitelist()
@@ -188,3 +249,10 @@ def get_available_time_slots(date, service, staff=None):
 				available_slots.append(slot_time)
 	
 	return available_slots
+
+
+@frappe.whitelist()
+def create_sales_invoice_from_appointment(appointment):
+	"""Create sales invoice from spa appointment"""
+	appointment_doc = frappe.get_doc("Spa Appointment", appointment)
+	return appointment_doc.create_sales_invoice()
