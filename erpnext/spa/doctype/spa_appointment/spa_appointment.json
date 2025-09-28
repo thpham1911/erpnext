@@ -1,0 +1,378 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-09-28 12:07:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details",
+  "naming_series",
+  "appointment_date",
+  "appointment_time",
+  "duration_minutes",
+  "column_break_4",
+  "status",
+  "priority",
+  "customer_section",
+  "customer",
+  "customer_name",
+  "customer_mobile",
+  "customer_email",
+  "column_break_customer",
+  "customer_category",
+  "is_new_customer",
+  "service_section",
+  "spa_service",
+  "service_name",
+  "service_category",
+  "column_break_service",
+  "base_price",
+  "final_price",
+  "discount_amount",
+  "staff_section",
+  "assigned_staff",
+  "staff_name",
+  "column_break_staff",
+  "room_assigned",
+  "equipment_notes",
+  "notes_section",
+  "customer_notes",
+  "internal_notes",
+  "status_section",
+  "appointment_status",
+  "created_by",
+  "column_break_status",
+  "confirmed_at",
+  "completed_at",
+  "cancelled_at",
+  "no_show",
+  "notifications_section",
+  "sms_sent",
+  "email_sent",
+  "column_break_notifications",
+  "reminder_sent",
+  "confirmation_required"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SPA-APT-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "appointment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Appointment Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "appointment_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Appointment Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Scheduled\nConfirmed\nIn Progress\nCompleted\nCancelled\nNo Show",
+   "reqd": 1
+  },
+  {
+   "default": "Normal",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nNormal\nHigh\nUrgent"
+  },
+  {
+   "fieldname": "customer_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Details"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Read Only",
+   "label": "Customer Name"
+  },
+  {
+   "fetch_from": "customer.mobile_no",
+   "fieldname": "customer_mobile",
+   "fieldtype": "Read Only",
+   "label": "Mobile No"
+  },
+  {
+   "fetch_from": "customer.email_id",
+   "fieldname": "customer_email",
+   "fieldtype": "Read Only",
+   "label": "Email"
+  },
+  {
+   "fieldname": "column_break_customer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "customer.customer_category",
+   "fieldname": "customer_category",
+   "fieldtype": "Read Only",
+   "label": "Customer Category"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_new_customer",
+   "fieldtype": "Check",
+   "label": "New Customer"
+  },
+  {
+   "fieldname": "service_section",
+   "fieldtype": "Section Break",
+   "label": "Service Details"
+  },
+  {
+   "fieldname": "spa_service",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Spa Service",
+   "options": "Spa Service",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "spa_service.service_name",
+   "fieldname": "service_name",
+   "fieldtype": "Read Only",
+   "label": "Service Name"
+  },
+  {
+   "fetch_from": "spa_service.service_category",
+   "fieldname": "service_category",
+   "fieldtype": "Read Only",
+   "label": "Service Category"
+  },
+  {
+   "fieldname": "column_break_service",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "spa_service.base_price",
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "label": "Base Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_price",
+   "fieldtype": "Currency",
+   "label": "Final Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount"
+  },
+  {
+   "fieldname": "staff_section",
+   "fieldtype": "Section Break",
+   "label": "Staff Assignment"
+  },
+  {
+   "fieldname": "assigned_staff",
+   "fieldtype": "Link",
+   "label": "Assigned Staff",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "assigned_staff.employee_name",
+   "fieldname": "staff_name",
+   "fieldtype": "Read Only",
+   "label": "Staff Name"
+  },
+  {
+   "fieldname": "column_break_staff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room_assigned",
+   "fieldtype": "Link",
+   "label": "Room Assigned",
+   "options": "Spa Room"
+  },
+  {
+   "fieldname": "equipment_notes",
+   "fieldtype": "Text",
+   "label": "Equipment Notes"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "customer_notes",
+   "fieldtype": "Text",
+   "label": "Customer Notes"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Text",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status Tracking"
+  },
+  {
+   "default": "Scheduled",
+   "fieldname": "appointment_status",
+   "fieldtype": "Select",
+   "label": "Appointment Status",
+   "options": "Scheduled\nConfirmed\nIn Progress\nCompleted\nCancelled\nNo Show\nRescheduled"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "confirmed_at",
+   "fieldtype": "Datetime",
+   "label": "Confirmed At"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At"
+  },
+  {
+   "fieldname": "cancelled_at",
+   "fieldtype": "Datetime",
+   "label": "Cancelled At"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_show",
+   "fieldtype": "Check",
+   "label": "No Show"
+  },
+  {
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "0",
+   "fieldname": "sms_sent",
+   "fieldtype": "Check",
+   "label": "SMS Sent"
+  },
+  {
+   "default": "0",
+   "fieldname": "email_sent",
+   "fieldtype": "Check",
+   "label": "Email Sent"
+  },
+  {
+   "fieldname": "column_break_notifications",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "reminder_sent",
+   "fieldtype": "Check",
+   "label": "Reminder Sent"
+  },
+  {
+   "default": "1",
+   "fieldname": "confirmation_required",
+   "fieldtype": "Check",
+   "label": "Confirmation Required"
+  }
+ ],
+ "icon": "fa fa-calendar",
+ "idx": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-28 12:07:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Spa Appointment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Spa Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Spa Staff",
+   "write": 1
+  }
+ ],
+ "search_fields": "customer, customer_name, spa_service, appointment_date",
+ "sort_field": "appointment_date",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "customer_name",
+ "track_changes": 1
+}

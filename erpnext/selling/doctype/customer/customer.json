@@ -88,7 +88,14 @@
   "is_frozen",
   "disabled",
   "portal_users_tab",
-  "portal_users"
+  "portal_users",
+  "spa_details_section",
+  "date_of_birth",
+  "customer_category",
+  "customer_preferences",
+  "col_break_spa",
+  "birthday_reminder",
+  "promotional_sms"
  ],
  "fields": [
   {
@@ -605,6 +612,44 @@
    "fieldtype": "Table",
    "label": "Supplier Numbers",
    "options": "Supplier Number At Customer"
+  },
+  {
+   "fieldname": "spa_details_section",
+   "fieldtype": "Section Break",
+   "label": "Spa Details"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "default": "New Customer",
+   "fieldname": "customer_category",
+   "fieldtype": "Select",
+   "label": "Customer Category",
+   "options": "New Customer\nRegular Customer\nVIP Customer"
+  },
+  {
+   "fieldname": "customer_preferences",
+   "fieldtype": "Text",
+   "label": "Customer Preferences"
+  },
+  {
+   "fieldname": "col_break_spa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "birthday_reminder",
+   "fieldtype": "Check",
+   "label": "Send Birthday Reminder"
+  },
+  {
+   "default": "1",
+   "fieldname": "promotional_sms",
+   "fieldtype": "Check",
+   "label": "Send Promotional SMS"
   }
  ],
  "icon": "fa fa-user",

@@ -1,0 +1,279 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-09-28 12:08:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details",
+  "naming_series",
+  "customer",
+  "customer_name",
+  "service_date",
+  "column_break_4",
+  "spa_service",
+  "service_name",
+  "service_category",
+  "staff_details",
+  "staff_assigned",
+  "staff_name",
+  "column_break_staff",
+  "room_used",
+  "duration_minutes",
+  "pricing_details",
+  "base_price",
+  "discount_applied",
+  "column_break_pricing",
+  "price_paid",
+  "payment_method",
+  "reference_details",
+  "appointment_reference",
+  "sales_invoice_reference",
+  "column_break_ref",
+  "created_by",
+  "created_on",
+  "notes_section",
+  "customer_feedback",
+  "service_notes",
+  "column_break_notes",
+  "follow_up_required",
+  "follow_up_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SPA-HST-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Service Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spa_service",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Spa Service",
+   "options": "Spa Service",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "spa_service.service_name",
+   "fieldname": "service_name",
+   "fieldtype": "Read Only",
+   "label": "Service Name"
+  },
+  {
+   "fetch_from": "spa_service.service_category",
+   "fieldname": "service_category",
+   "fieldtype": "Read Only",
+   "label": "Service Category"
+  },
+  {
+   "fieldname": "staff_details",
+   "fieldtype": "Section Break",
+   "label": "Staff Details"
+  },
+  {
+   "fieldname": "staff_assigned",
+   "fieldtype": "Link",
+   "label": "Staff Assigned",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "staff_assigned.employee_name",
+   "fieldname": "staff_name",
+   "fieldtype": "Read Only",
+   "label": "Staff Name"
+  },
+  {
+   "fieldname": "column_break_staff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room_used",
+   "fieldtype": "Link",
+   "label": "Room Used",
+   "options": "Spa Room"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "label": "Duration (Minutes)"
+  },
+  {
+   "fieldname": "pricing_details",
+   "fieldtype": "Section Break",
+   "label": "Pricing Details"
+  },
+  {
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "label": "Base Price"
+  },
+  {
+   "fieldname": "discount_applied",
+   "fieldtype": "Currency",
+   "label": "Discount Applied"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price_paid",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price Paid",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "Cash\nCard\nMobile Payment\nBank Transfer\nVoucher\nPackage Credit"
+  },
+  {
+   "fieldname": "reference_details",
+   "fieldtype": "Section Break",
+   "label": "Reference Details"
+  },
+  {
+   "fieldname": "appointment_reference",
+   "fieldtype": "Link",
+   "label": "Appointment Reference",
+   "options": "Spa Appointment"
+  },
+  {
+   "fieldname": "sales_invoice_reference",
+   "fieldtype": "Link",
+   "label": "Sales Invoice Reference",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "column_break_ref",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "user",
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "created_on",
+   "fieldtype": "Date",
+   "label": "Created On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes & Feedback"
+  },
+  {
+   "fieldname": "customer_feedback",
+   "fieldtype": "Text",
+   "label": "Customer Feedback"
+  },
+  {
+   "fieldname": "service_notes",
+   "fieldtype": "Text",
+   "label": "Service Notes"
+  },
+  {
+   "fieldname": "column_break_notes",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "follow_up_required",
+   "fieldtype": "Check",
+   "label": "Follow Up Required"
+  },
+  {
+   "fieldname": "follow_up_notes",
+   "fieldtype": "Text",
+   "label": "Follow Up Notes"
+  }
+ ],
+ "icon": "fa fa-history",
+ "idx": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-28 12:08:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Customer Service History",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Spa Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Spa Staff"
+  }
+ ],
+ "search_fields": "customer, customer_name, spa_service, service_date",
+ "sort_field": "service_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name",
+ "track_changes": 1
+}

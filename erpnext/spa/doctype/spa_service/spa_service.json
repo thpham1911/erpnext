@@ -1,0 +1,220 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-09-28 12:05:00.000000",
+ "doctype": "DocType",
+ "document_type": "Master",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details",
+  "naming_series",
+  "service_name",
+  "service_category",
+  "column_break_4",
+  "is_active",
+  "is_combo",
+  "duration_minutes",
+  "description",
+  "pricing_section",
+  "base_price",
+  "currency",
+  "column_break_pricing",
+  "tax_template",
+  "discount_percentage",
+  "staff_section",
+  "requires_specialist",
+  "preferred_staff",
+  "settings_section",
+  "room_required",
+  "equipment_required",
+  "column_break_settings",
+  "advance_booking_days",
+  "cancellation_hours"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SPA-SRV-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Service Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Service Category",
+   "options": "Massage\nSkincare\nHair Care\nNail Care\nBody Treatment\nFacial\nCombo Package",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_combo",
+   "fieldtype": "Check",
+   "label": "Is Combo Package"
+  },
+  {
+   "fieldname": "duration_minutes",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Duration (Minutes)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Base Price",
+   "reqd": 1
+  },
+  {
+   "default": "VND",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_pricing",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_template",
+   "fieldtype": "Link",
+   "label": "Tax Template",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Float",
+   "label": "Max Discount %"
+  },
+  {
+   "fieldname": "staff_section",
+   "fieldtype": "Section Break",
+   "label": "Staff Requirements"
+  },
+  {
+   "default": "0",
+   "fieldname": "requires_specialist",
+   "fieldtype": "Check",
+   "label": "Requires Specialist"
+  },
+  {
+   "fieldname": "preferred_staff",
+   "fieldtype": "Link",
+   "label": "Preferred Staff",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "settings_section",
+   "fieldtype": "Section Break",
+   "label": "Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "room_required",
+   "fieldtype": "Check",
+   "label": "Room Required"
+  },
+  {
+   "fieldname": "equipment_required",
+   "fieldtype": "Text",
+   "label": "Equipment Required"
+  },
+  {
+   "fieldname": "column_break_settings",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "7",
+   "fieldname": "advance_booking_days",
+   "fieldtype": "Int",
+   "label": "Advance Booking Days"
+  },
+  {
+   "default": "24",
+   "fieldname": "cancellation_hours",
+   "fieldtype": "Int",
+   "label": "Cancellation Notice Hours"
+  }
+ ],
+ "icon": "fa fa-spa",
+ "idx": 1,
+ "links": [],
+ "modified": "2024-09-28 12:05:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Spa Service",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Spa Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Spa Staff"
+  }
+ ],
+ "search_fields": "service_name, service_category",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "service_name",
+ "track_changes": 1
+}
