@@ -1,0 +1,113 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Spa Management") }}{% endblock %}
+
+{% block script %}
+<script src="spa/index.js"></script>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="spa/index.css">
+{% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mt-3 mb-4">
+                <h2>{{ _("Spa Management System") }}</h2>
+                <p class="text-muted">{{ _("Manage spa services, rooms, and appointments") }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Tabs -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav class="nav nav-pills nav-justified" id="spa-nav">
+                <a class="nav-link active" data-bs-toggle="pill" href="#services" role="tab">
+                    {{ _("Services") }}
+                </a>
+                <a class="nav-link" data-bs-toggle="pill" href="#rooms" role="tab">
+                    {{ _("Rooms") }}
+                </a>
+                <a class="nav-link" data-bs-toggle="pill" href="#appointments" role="tab">
+                    {{ _("Appointments") }}
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+        <!-- Services Tab -->
+        <div class="tab-pane fade show active" id="services" role="tabpanel">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">{{ _("Spa Services") }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="services-container">
+                                <div class="text-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">{{ _("Loading services...") }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rooms Tab -->
+        <div class="tab-pane fade" id="rooms" role="tabpanel">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">{{ _("Spa Rooms") }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="rooms-container">
+                                <div class="text-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">{{ _("Loading rooms...") }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointments Tab -->
+        <div class="tab-pane fade" id="appointments" role="tabpanel">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">{{ _("Recent Appointments") }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="appointments-container">
+                                <div class="text-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-2">{{ _("Loading appointments...") }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
