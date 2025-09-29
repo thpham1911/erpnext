@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:room_name",
+ "creation": "2024-09-28 12:11:00.000000",
+ "doctype": "DocType",
+ "document_type": "Master",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details",
+  "room_name",
+  "room_code",
+  "room_type",
+  "column_break_4",
+  "is_active",
+  "capacity",
+  "floor_number",
+  "location_section",
+  "building",
+  "floor",
+  "column_break_location",
+  "area_sqm",
+  "description",
+  "equipment_section",
+  "equipment_list",
+  "amenities",
+  "column_break_equipment",
+  "special_features",
+  "maintenance_notes",
+  "status_section",
+  "current_status",
+  "last_cleaned",
+  "column_break_status",
+  "next_maintenance",
+  "maintenance_frequency_days",
+  "booking_section",
+  "hourly_rate",
+  "advance_booking_required",
+  "column_break_booking",
+  "max_booking_duration",
+  "cleaning_time_minutes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "room_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Room Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "room_code",
+   "fieldtype": "Data",
+   "label": "Room Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Room Type",
+   "options": "Individual Treatment\nCouple Treatment\nVIP Suite\nMassage Room\nSauna\nSteam Room\nRelaxation Lounge\nConsultation Room",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "default": "1",
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Capacity (Number of People)"
+  },
+  {
+   "fieldname": "floor_number",
+   "fieldtype": "Int",
+   "label": "Floor Number"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location Details"
+  },
+  {
+   "fieldname": "building",
+   "fieldtype": "Data",
+   "label": "Building"
+  },
+  {
+   "fieldname": "floor",
+   "fieldtype": "Data",
+   "label": "Floor"
+  },
+  {
+   "fieldname": "column_break_location",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "area_sqm",
+   "fieldtype": "Float",
+   "label": "Area (sq.m)"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "equipment_section",
+   "fieldtype": "Section Break",
+   "label": "Equipment & Amenities"
+  },
+  {
+   "fieldname": "equipment_list",
+   "fieldtype": "Text",
+   "label": "Equipment List"
+  },
+  {
+   "fieldname": "amenities",
+   "fieldtype": "Text",
+   "label": "Amenities"
+  },
+  {
+   "fieldname": "column_break_equipment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "special_features",
+   "fieldtype": "Text",
+   "label": "Special Features"
+  },
+  {
+   "fieldname": "maintenance_notes",
+   "fieldtype": "Text",
+   "label": "Maintenance Notes"
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status & Maintenance"
+  },
+  {
+   "default": "Available",
+   "fieldname": "current_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Current Status",
+   "options": "Available\nOccupied\nCleaning\nMaintenance\nOut of Order"
+  },
+  {
+   "fieldname": "last_cleaned",
+   "fieldtype": "Datetime",
+   "label": "Last Cleaned"
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_maintenance",
+   "fieldtype": "Date",
+   "label": "Next Maintenance Date"
+  },
+  {
+   "default": "30",
+   "fieldname": "maintenance_frequency_days",
+   "fieldtype": "Int",
+   "label": "Maintenance Frequency (Days)"
+  },
+  {
+   "fieldname": "booking_section",
+   "fieldtype": "Section Break",
+   "label": "Booking Settings"
+  },
+  {
+   "fieldname": "hourly_rate",
+   "fieldtype": "Currency",
+   "label": "Hourly Rate (if applicable)"
+  },
+  {
+   "default": "0",
+   "fieldname": "advance_booking_required",
+   "fieldtype": "Check",
+   "label": "Advance Booking Required"
+  },
+  {
+   "fieldname": "column_break_booking",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "480",
+   "fieldname": "max_booking_duration",
+   "fieldtype": "Int",
+   "label": "Max Booking Duration (Minutes)"
+  },
+  {
+   "default": "30",
+   "fieldname": "cleaning_time_minutes",
+   "fieldtype": "Int",
+   "label": "Cleaning Time Between Bookings (Minutes)"
+  }
+ ],
+ "icon": "fa fa-bed",
+ "idx": 1,
+ "links": [],
+ "modified": "2024-09-28 12:11:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Spa Room",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Spa Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Spa Staff"
+  }
+ ],
+ "search_fields": "room_name, room_type, current_status",
+ "sort_field": "room_name",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "room_name",
+ "track_changes": 1
+}

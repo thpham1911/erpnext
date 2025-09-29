@@ -429,7 +429,12 @@ scheduler_events = {
 		"erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings.automatic_synchronization",
 		"erpnext.utilities.doctype.video.video.update_youtube_data",
 	],
-	"daily": [],
+	"daily": [
+		"erpnext.spa.utils.send_birthday_reminders",
+		"erpnext.spa.utils.send_appointment_reminders",
+		"erpnext.spa.utils.check_membership_renewals",
+		"erpnext.spa.utils.update_room_status",
+	],
 	"daily_long": [],
 	"daily_maintenance": [
 		"erpnext.support.doctype.issue.issue.auto_close_tickets",

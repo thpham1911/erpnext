@@ -1,0 +1,292 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-09-28 12:15:00.000000",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details",
+  "naming_series",
+  "customer",
+  "customer_name",
+  "membership_type",
+  "column_break_4",
+  "start_date",
+  "end_date",
+  "status",
+  "package_details",
+  "package_name",
+  "total_sessions",
+  "used_sessions",
+  "column_break_package",
+  "remaining_sessions",
+  "package_value",
+  "amount_paid",
+  "benefits_section",
+  "discount_percentage",
+  "priority_booking",
+  "column_break_benefits",
+  "complimentary_services",
+  "special_offers",
+  "payment_section",
+  "payment_method",
+  "payment_date",
+  "column_break_payment",
+  "payment_reference",
+  "auto_renewal",
+  "tracking_section",
+  "created_by",
+  "created_date",
+  "column_break_tracking",
+  "last_used_date",
+  "renewal_reminder_sent"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_details",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SPA-MEM-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "membership_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Membership Type",
+   "options": "Basic\nSilver\nGold\nPlatinum\nVIP\nCouple\nFamily",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nSuspended\nExpired\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "package_details",
+   "fieldtype": "Section Break",
+   "label": "Package Details"
+  },
+  {
+   "fieldname": "package_name",
+   "fieldtype": "Data",
+   "label": "Package Name"
+  },
+  {
+   "fieldname": "total_sessions",
+   "fieldtype": "Int",
+   "label": "Total Sessions",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "used_sessions",
+   "fieldtype": "Int",
+   "label": "Used Sessions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_package",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remaining_sessions",
+   "fieldtype": "Int",
+   "label": "Remaining Sessions",
+   "read_only": 1
+  },
+  {
+   "fieldname": "package_value",
+   "fieldtype": "Currency",
+   "label": "Package Value"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid",
+   "reqd": 1
+  },
+  {
+   "fieldname": "benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Benefits"
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Float",
+   "label": "Discount Percentage"
+  },
+  {
+   "default": "0",
+   "fieldname": "priority_booking",
+   "fieldtype": "Check",
+   "label": "Priority Booking"
+  },
+  {
+   "fieldname": "column_break_benefits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "complimentary_services",
+   "fieldtype": "Text",
+   "label": "Complimentary Services"
+  },
+  {
+   "fieldname": "special_offers",
+   "fieldtype": "Text",
+   "label": "Special Offers"
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment Method",
+   "options": "Cash\nCard\nBank Transfer\nMobile Payment"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date"
+  },
+  {
+   "fieldname": "column_break_payment",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference"
+  },
+  {
+   "default": "0",
+   "fieldname": "auto_renewal",
+   "fieldtype": "Check",
+   "label": "Auto Renewal"
+  },
+  {
+   "fieldname": "tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Tracking"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "created_date",
+   "fieldtype": "Date",
+   "label": "Created Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tracking",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_used_date",
+   "fieldtype": "Date",
+   "label": "Last Used Date",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "renewal_reminder_sent",
+   "fieldtype": "Check",
+   "label": "Renewal Reminder Sent"
+  }
+ ],
+ "icon": "fa fa-star",
+ "idx": 1,
+ "links": [],
+ "modified": "2024-09-28 12:15:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Spa Membership",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Spa Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Spa Staff"
+  }
+ ],
+ "search_fields": "customer, customer_name, membership_type, status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name",
+ "track_changes": 1
+}

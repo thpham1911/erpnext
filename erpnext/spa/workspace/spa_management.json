@@ -1,0 +1,54 @@
+{
+ "cards": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Appointments",
+   "links": "[{\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Spa Appointment\", \"link_count\": 0, \"link_to\": \"Spa Appointment\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}, {\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Calendar View\", \"link_count\": 0, \"link_to\": \"Calendar/Spa Appointment\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}]"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Services & Packages",
+   "links": "[{\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Spa Service\", \"link_count\": 0, \"link_to\": \"Spa Service\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}, {\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Spa Membership\", \"link_count\": 0, \"link_to\": \"Spa Membership\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}]"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer Management",
+   "links": "[{\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Customer\", \"link_count\": 0, \"link_to\": \"Customer\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}, {\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Customer Service History\", \"link_count\": 0, \"link_to\": \"Customer Service History\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}]"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Facilities",
+   "links": "[{\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Spa Room\", \"link_count\": 0, \"link_to\": \"Spa Room\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}, {\"dependencies\": \"\", \"hidden\": 0, \"is_query_report\": 0, \"label\": \"Employee\", \"link_count\": 0, \"link_to\": \"Employee\", \"link_type\": \"DocType\", \"onboard\": 0, \"type\": \"link\"}]"
+  }
+ ],
+ "charts": [],
+ "content": "[{\"id\":\"1dFJqTc4ZO\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Spa Management\",\"col\":12}},{\"id\":\"9dThKt8QAo\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today's Appointments\",\"col\":3}},{\"id\":\"kIiQUzBiXM\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Monthly Revenue\",\"col\":3}},{\"id\":\"LlYbnl8Y7f\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Memberships\",\"col\":3}},{\"id\":\"0h3uHcFKjz\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Available Rooms\",\"col\":3}},{\"id\":\"g6tRHsL3WV\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"Aeo7rFhBUi\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Quick Actions</b></span>\",\"col\":12}},{\"id\":\"jFOJCKc7QR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Appointment\",\"col\":3}},{\"id\":\"BIbzHNE9gJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Customer\",\"col\":3}},{\"id\":\"uq7hLlRk8z\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Service\",\"col\":3}},{\"id\":\"eaGUTkCDzh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Status\",\"col\":3}},{\"id\":\"1sJQKDEP6h\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"G5rBTmhVYl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Management</b></span>\",\"col\":12}},{\"id\":\"8mUFGFcvMd\",\"type\":\"card\",\"data\":{\"card_name\":\"Appointments\",\"col\":3}},{\"id\":\"9HpjNYAhHs\",\"type\":\"card\",\"data\":{\"card_name\":\"Services & Packages\",\"col\":3}},{\"id\":\"fK1nBGJ8M7\",\"type\":\"card\",\"data\":{\"card_name\":\"Customer Management\",\"col\":3}},{\"id\":\"x4PhUGHhbZ\",\"type\":\"card\",\"data\":{\"card_name\":\"Facilities\",\"col\":3}}]",
+ "creation": "2024-09-28 12:20:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "spa",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Spa Management",
+ "links": [],
+ "modified": "2024-09-28 12:20:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Spa Management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 22.0,
+ "shortcuts": [],
+ "title": "Spa Management"
+}

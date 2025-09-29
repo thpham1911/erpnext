@@ -1,0 +1,90 @@
+{
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "service_name",
+   "fieldtype": "Data",
+   "label": "Service Name",
+   "width": 200
+  },
+  {
+   "fieldname": "service_category",
+   "fieldtype": "Data",
+   "label": "Category",
+   "width": 150
+  },
+  {
+   "fieldname": "total_appointments",
+   "fieldtype": "Int",
+   "label": "Total Appointments",
+   "width": 120
+  },
+  {
+   "fieldname": "completed_appointments",
+   "fieldtype": "Int",
+   "label": "Completed",
+   "width": 120
+  },
+  {
+   "fieldname": "total_revenue",
+   "fieldtype": "Currency",
+   "label": "Total Revenue",
+   "width": 150
+  },
+  {
+   "fieldname": "average_price",
+   "fieldtype": "Currency",
+   "label": "Average Price",
+   "width": 120
+  },
+  {
+   "fieldname": "completion_rate",
+   "fieldtype": "Percent",
+   "label": "Completion Rate",
+   "width": 120
+  }
+ ],
+ "creation": "2024-09-28 12:18:00.000000",
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date", 
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_category",
+   "fieldtype": "Select",
+   "label": "Service Category",
+   "options": "\nMassage\nSkincare\nHair Care\nNail Care\nBody Treatment\nFacial\nCombo Package"
+  }
+ ],
+ "idx": 1,
+ "is_standard": "Yes",
+ "modified": "2024-09-28 12:18:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spa",
+ "name": "Spa Revenue Summary",
+ "owner": "Administrator",
+ "ref_doctype": "Spa Appointment",
+ "report_name": "Spa Revenue Summary",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Spa Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ]
+}
