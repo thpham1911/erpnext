@@ -1,0 +1,129 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Booking Calendar") }}{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script src="booking_calendar/index.js"></script>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="booking_calendar/index.css">
+{% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mt-3 mb-4">
+                <h2>{{ _("Booking Calendar") }}</h2>
+                <p class="text-muted">{{ _("View and book appointments") }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-body">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{{ _("Legend") }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-2">
+                        <span class="badge badge-success me-2">&nbsp;&nbsp;&nbsp;</span>
+                        {{ _("Open Appointments") }}
+                    </div>
+                    <div class="mb-2">
+                        <span class="badge badge-warning me-2">&nbsp;&nbsp;&nbsp;</span>
+                        {{ _("Unverified Appointments") }}
+                    </div>
+                    <div class="mb-2">
+                        <span class="badge badge-secondary me-2">&nbsp;&nbsp;&nbsp;</span>
+                        {{ _("Closed Appointments") }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>{{ _("Quick Book") }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted small">{{ _("Click on a date/time in the calendar to book an appointment") }}</p>
+                    <button class="btn btn-primary btn-sm w-100" id="book-appointment-btn">
+                        {{ _("Book New Appointment") }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Appointment Modal -->
+<div class="modal fade" id="appointmentModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="appointmentModalLabel">{{ _("Book Appointment") }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="appointmentForm">
+                    <div class="mb-3">
+                        <label class="form-label">{{ _("Date & Time") }}</label>
+                        <input type="datetime-local" class="form-control" id="appointmentDateTime" required readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{{ _("Customer Name") }}</label>
+                        <input type="text" class="form-control" id="customerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{{ _("Email") }}</label>
+                        <input type="email" class="form-control" id="customerEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{{ _("Phone") }}</label>
+                        <input type="tel" class="form-control" id="customerPhone">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{{ _("Notes") }}</label>
+                        <textarea class="form-control" id="customerNotes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _("Cancel") }}</button>
+                <button type="button" class="btn btn-primary" id="saveAppointment">{{ _("Book Appointment") }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Appointment Details Modal -->
+<div class="modal fade" id="appointmentDetailsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _("Appointment Details") }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="appointmentDetailsContent">
+                    <!-- Content populated by JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _("Close") }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

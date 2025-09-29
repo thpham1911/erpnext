@@ -12,6 +12,8 @@ from frappe.share import add_docshare
 from frappe.utils import get_url, getdate, now
 from frappe.utils.verified_command import get_signed_params
 
+import json
+
 
 class Appointment(Document):
 	# begin: auto-generated types
@@ -265,3 +267,56 @@ def _get_employee_from_user(user):
 	if employee_docname:
 		return frappe.get_doc("Employee", employee_docname)
 	return None
+
+
+@frappe.whitelist()
+def get_events(start, end, filters=None):
+	"""Returns events for Calendar view rendering.
+	
+	:param start: Start date-time.
+	:param end: End date-time.
+	:param filters: Filters (JSON).
+	"""
+	from frappe.desk.calendar import get_event_conditions
+	
+	if filters:
+		filters = json.loads(filters)
+	else:
+		filters = []
+
+	conditions = get_event_conditions("Appointment", filters)
+	
+	appointments = frappe.db.sql("""
+		SELECT 
+			name, 
+			customer_name,
+			customer_email,
+			scheduled_time,
+			status,
+			appointment_with,
+			party,
+			customer_phone_number
+		FROM `tabAppointment`
+		WHERE scheduled_time BETWEEN %(start)s AND %(end)s {conditions}
+		ORDER BY scheduled_time
+	""".format(conditions=conditions), {
+		"start": start,
+		"end": end
+	}, as_dict=True)
+	
+	# Format events for calendar
+	events = []
+	for appointment in appointments:
+		event = {
+			"name": appointment.name,
+			"title": f"{appointment.customer_name}",
+			"description": f"Email: {appointment.customer_email}\nPhone: {appointment.customer_phone_number or 'N/A'}",
+			"start": appointment.scheduled_time,
+			"end": appointment.scheduled_time,
+			"allDay": 0,
+			"status": appointment.status,
+			"doctype": "Appointment",
+		}
+		events.append(event)
+	
+	return events
