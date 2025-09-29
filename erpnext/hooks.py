@@ -108,7 +108,7 @@ jinja = {
 # website
 webform_list_context = "erpnext.controllers.website_list_for_contact.get_webform_list_context"
 
-calendars = ["Task", "Work Order", "Sales Order", "Holiday List", "ToDo"]
+calendars = ["Task", "Work Order", "Sales Order", "Holiday List", "ToDo", "Appointment", "Timesheet"]
 
 website_generators = ["BOM", "Sales Partner"]
 

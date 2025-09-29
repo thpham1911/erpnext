@@ -203,9 +203,22 @@ function showAppointmentDetails(event) {
         </div>` : ''}
         <div class="row mt-3">
             <div class="col-12">
-                <a href="/app/appointment/${props.appointment_id}" class="btn btn-primary btn-sm" target="_blank">
-                    ${__('View Full Details')}
-                </a>
+                <div class="btn-group w-100" role="group">
+                    <a href="/app/appointment/${props.appointment_id}" class="btn btn-primary btn-sm" target="_blank">
+                        ${__('View Full Details')}
+                    </a>
+                    ${canManageAppointments() ? `
+                    <button type="button" class="btn btn-warning btn-sm" onclick="changeAppointmentStatus('${props.appointment_id}', 'Unverified')">
+                        ${__('Mark Unverified')}
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm" onclick="changeAppointmentStatus('${props.appointment_id}', 'Open')">
+                        ${__('Mark Open')}
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="changeAppointmentStatus('${props.appointment_id}', 'Closed')">
+                        ${__('Mark Closed')}
+                    </button>
+                    ` : ''}
+                </div>
             </div>
         </div>
     `;
@@ -214,6 +227,55 @@ function showAppointmentDetails(event) {
     
     const modal = new bootstrap.Modal(document.getElementById('appointmentDetailsModal'));
     modal.show();
+}
+
+function canManageAppointments() {
+    // Check if user has permission to manage appointments
+    // This is a simplified check - in real implementation, this should be based on user roles
+    return frappe.user && frappe.user.name !== 'Guest';
+}
+
+function changeAppointmentStatus(appointmentId, newStatus) {
+    if (!canManageAppointments()) {
+        frappe.show_alert({
+            message: __('You do not have permission to change appointment status'),
+            indicator: 'red'
+        });
+        return;
+    }
+    
+    frappe.call({
+        method: 'erpnext.www.booking_calendar.index.update_appointment_status',
+        args: {
+            appointment_name: appointmentId,
+            status: newStatus
+        },
+        callback: function(response) {
+            if (response.message && response.message.success) {
+                frappe.show_alert({
+                    message: response.message.message,
+                    indicator: 'green'
+                });
+                
+                // Close modal and refresh calendar
+                const modal = bootstrap.Modal.getInstance(document.getElementById('appointmentDetailsModal'));
+                modal.hide();
+                calendar.refetchEvents();
+            } else {
+                frappe.show_alert({
+                    message: __('Failed to update appointment status'),
+                    indicator: 'red'
+                });
+            }
+        },
+        error: function(error) {
+            console.error('Error updating appointment status:', error);
+            frappe.show_alert({
+                message: __('Failed to update appointment status'),
+                indicator: 'red'
+            });
+        }
+    });
 }
 
 function getStatusBadgeClass(status) {

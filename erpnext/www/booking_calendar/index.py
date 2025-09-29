@@ -100,6 +100,45 @@ def create_appointment_from_calendar(date, time, customer_name, customer_email, 
 	return create_appointment(date, time, timezone, contact)
 
 
+@frappe.whitelist()
+def get_appointment_details(appointment_name):
+	"""Get detailed information about an appointment"""
+	if not frappe.has_permission("Appointment", "read"):
+		frappe.throw(_("Not permitted to read appointment details"))
+	
+	appointment = frappe.get_doc("Appointment", appointment_name)
+	
+	return {
+		"name": appointment.name,
+		"customer_name": appointment.customer_name,
+		"customer_email": appointment.customer_email,
+		"customer_phone_number": appointment.customer_phone_number,
+		"customer_details": appointment.customer_details,
+		"scheduled_time": appointment.scheduled_time,
+		"status": appointment.status,
+		"appointment_with": appointment.appointment_with,
+		"party": appointment.party,
+		"calendar_event": appointment.calendar_event
+	}
+
+
+@frappe.whitelist()
+def update_appointment_status(appointment_name, status):
+	"""Update appointment status"""
+	if not frappe.has_permission("Appointment", "write"):
+		frappe.throw(_("Not permitted to update appointment"))
+	
+	valid_statuses = ["Open", "Unverified", "Closed"]
+	if status not in valid_statuses:
+		frappe.throw(_("Invalid status. Must be one of: {0}").format(", ".join(valid_statuses)))
+	
+	appointment = frappe.get_doc("Appointment", appointment_name)
+	appointment.status = status
+	appointment.save(ignore_permissions=True)
+	
+	return {"success": True, "message": _("Appointment status updated successfully")}
+
+
 def get_event_color(status):
 	"""Get color for event based on status"""
 	color_map = {
